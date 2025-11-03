@@ -1,8 +1,8 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 const mongoose = require("mongoose");
-const connectDB = require("./db"); // --- MODIFIED ---
-const Horoscope = require("./horoscope.model"); // --- MODIFIED ---
+const connectDB = require("./db"); 
+const Horoscope = require("./horoscope.model"); 
 
 // ----------------- CONFIGURATION -----------------
 // (MONGODB_URI is no longer needed here, it's in db.js)
