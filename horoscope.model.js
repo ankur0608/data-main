@@ -4,7 +4,7 @@ const horoscopeSchema = new mongoose.Schema(
   {
     language: { type: String, required: true },
     sign: { type: String, required: true },
-    date: { type: String, required: true }, // Format: 'YYYY-MM-DD'
+    date: { type: String, required: true }, 
     horoscope: { type: String, default: null },
     luckyNumber: { type: String, default: null },
     luckyColor: { type: String, default: null },
@@ -12,11 +12,10 @@ const horoscopeSchema = new mongoose.Schema(
     ratings: { type: Object, default: {} },
   },
   {
-    timestamps: true, // Adds createdAt and updatedAt timestamps
+    timestamps: true, 
   }
 );
 
-// Add a unique index to prevent duplicates for the same day/lang/sign
 horoscopeSchema.index({ language: 1, sign: 1, date: 1 }, { unique: true });
 
 const Horoscope = mongoose.model("Horoscope", horoscopeSchema);

@@ -5,14 +5,13 @@ const connectDB = require("./db");
 const Horoscope = require("./horoscope.model");
 
 // ----------------- CONFIGURATION -----------------
-// (MONGODB_URI is no longer needed here, it's in db.js)
 const CONCURRENCY_LIMIT = 8;
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 2000;
 
 // ---------------- Generic Scraper ----------------
 async function scrapeHoroscopeDetails(page, labels) {
-  // ... (This function is unchanged)
+
   return await page.evaluate((labels) => {
     const horoscopeEl =
       document.querySelector(".ui-large-content") ||
@@ -52,7 +51,7 @@ async function scrapeHoroscopeDetails(page, labels) {
         img.getAttribute("src").includes("star2.gif") ? 1 : 0
       );
 
-      const filledStars = stars.reduce((sum, s) => sum + s, 0); // ✅ Only keep if there’s at least 1 star
+      const filledStars = stars.reduce((sum, s) => sum + s, 0);
 
       if (filledStars > 0) {
         ratings[category] = filledStars;
@@ -155,7 +154,7 @@ const languages = {
       remedy: ["उपाय", "उपाय :-"],
     },
   },
-  // ... (inside the 'languages' object, after 'bengali' or another)
+
   odia: {
     baseUrl: "https://www.astrosage.com/odia/rasifala/{sign}-rasifala.asp",
     signs: {
@@ -178,7 +177,7 @@ const languages = {
       remedy: ["ଉପଚାର", "ଉପଚାର :-"],
     },
   },
-  // ... (rest of your languages)
+
   tamil: {
     baseUrl: "https://www.astrosage.com/tamil/rasi-palan/{sign}-rasi-palan.asp",
     signs: {
@@ -293,11 +292,6 @@ const languages = {
   },
 };
 
-// --- (Database Connection Function is removed, it's in db.js) ---
-// --- (Mongoose Schema and Model is removed, it's in horoscope.model.js) ---
-
-// --- Function to save data using upsert ---
-// (This function is unchanged, it now uses the imported Horoscope model)
 async function saveHoroscopeData(data) {
   try {
     const { language, sign, date } = data;
@@ -315,7 +309,6 @@ async function saveHoroscopeData(data) {
 
 // ---------------- Resilient Scraper with Retries ----------------
 async function scrapeWithRetry(browser, task) {
-  // ... (This function is unchanged)
   const { lang, sign, url, labels } = task;
   let page;
 
@@ -426,7 +419,6 @@ async function scrapeWithRetry(browser, task) {
 
   await Promise.all(runningPromises);
 
-  // ... (The JSON file writing part is unchanged) ...
   const finalOutput = {};
   for (const [lang] of Object.entries(languages)) {
     finalOutput[lang] = {};
