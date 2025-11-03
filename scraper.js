@@ -1,8 +1,8 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 const mongoose = require("mongoose");
-const connectDB = require("./db"); 
-const Horoscope = require("./horoscope.model"); 
+const connectDB = require("./db");
+const Horoscope = require("./horoscope.model");
 
 // ----------------- CONFIGURATION -----------------
 // (MONGODB_URI is no longer needed here, it's in db.js)
@@ -155,28 +155,30 @@ const languages = {
       remedy: ["उपाय", "उपाय :-"],
     },
   },
-  punjabi: {
-    baseUrl: "https://www.astrosage.com/punjabi/rashifal/{sign}-rashifal.asp",
+  // ... (inside the 'languages' object, after 'bengali' or another)
+  odia: {
+    baseUrl: "https://www.astrosage.com/odia/rasifala/{sign}-rasifala.asp",
     signs: {
-      aries: "megh",
-      taurus: "vrash",
+      aries: "mesha",
+      taurus: "vrishabha",
       gemini: "mithun",
-      cancer: "karak",
-      leo: "sigh",
-      virgo: "kania",
+      cancer: "karka",
+      leo: "simha",
+      virgo: "kanya",
       libra: "tula",
-      scorpio: "brishchak",
+      scorpio: "vrishchika",
       sagittarius: "dhanu",
-      capricorn: "makar",
-      aquarius: "kumbh",
-      pisces: "meen",
+      capricorn: "makara",
+      aquarius: "kumbha",
+      pisces: "meena",
     },
     labels: {
-      luckyNumber: ["ਭਾਗਸ਼ਾਲੀ ਨੰਬਰ", "ਭਾਗਸ਼ਾਲੀ ਨੰਬਰ :-"],
-      luckyColor: ["ਭਾਗਸ਼ਾਲੀ ਰੰਗ", "ਭਾਗਸ਼ਾਲੀ ਰੰਗ :-"],
-      remedy: ["ਉਪਾਅ", "ਉਪਾਅ :-"],
+      luckyNumber: ["ଶୁଭ ସଂଖ୍ୟା", "ଶୁଭ ସଂଖ୍ୟା :-"],
+      luckyColor: ["ଶୁଭ ରଙ୍ଗ", "ଶୁଭ ରଙ୍ଗ :-"],
+      remedy: ["ଉପଚାର", "ଉପଚାର :-"],
     },
   },
+  // ... (rest of your languages)
   tamil: {
     baseUrl: "https://www.astrosage.com/tamil/rasi-palan/{sign}-rasi-palan.asp",
     signs: {

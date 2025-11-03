@@ -16,6 +16,7 @@ const languageIdMap = {
   "6560d27b0bc4a38928599a47": "malayalam",
   "6560d27b0bc4a38928599a48": "gujarati",
   "6560d27b0bc4a38928599a49": "telugu",
+  "6560d27b0bc4a38928599a4b": "odia",
 };
 
 // --- NEW: Create a Set of valid language names for quick lookup ---
